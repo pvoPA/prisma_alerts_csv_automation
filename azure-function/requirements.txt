@@ -3,3 +3,7 @@
 # Manually managing azure-functions-worker may cause unexpected issues
 
 azure-functions
+autopep8==2.0.2
+black==23.3.0
+python-dotenv==0.21.0
+requests==2.28.1

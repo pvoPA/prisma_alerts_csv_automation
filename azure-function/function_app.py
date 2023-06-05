@@ -1,4 +1,5 @@
 import os
+import json
 import azure.functions as func
 from helpers import generate_prisma_token
 from helpers import prisma_get_alert_rules
@@ -30,8 +31,8 @@ def alert_rule_csv_automation(timer: func.TimerRequest):
 
     ###########################################################################
     # local variables
-    prisma_access_key = os.getenv("ACCESS_KEY")
-    prisma_secret_key = os.getenv("SECRET_KEY")
+    prisma_access_key = os.getenv("PRISMA_ACCESS_KEY")
+    prisma_secret_key = os.getenv("PRISMA_SECRET_KEY")
     rql_query = os.getenv("RQL_QUERY")
     rql_time_range = json.loads(os.getenv("RQL_TIME_RANGE"))
     unique_tag = os.getenv("UNIQUE_ATTRIBUTE")
