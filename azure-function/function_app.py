@@ -156,13 +156,18 @@ def alert_rule_csv_automation_timer(timer: func.TimerRequest):
                         alert_dict = {"Incremental_ID": incremental_id}
 
                         # Grab base alert information
-                        alert_dict.update(
-                            {
-                                key: value
-                                for key, value in alert.items()
-                                if (key in csv_fields_of_interest)
-                            }
-                        )
+                        if csv_fields_of_interest:
+                            alert_dict.update(
+                                {
+                                    key: value
+                                    for key, value in alert.items()
+                                    if (key in csv_fields_of_interest)
+                                }
+                            )
+                        else:
+                            alert_dict.update(
+                                {key: value for key, value in alert.items()}
+                            )
 
                         alerts_list.append(alert_dict)
 
